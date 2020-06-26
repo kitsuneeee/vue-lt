@@ -1,21 +1,31 @@
 <template>
   <div class="parent-wrap">
     <div>親</div>
-    <first-child :message="message" />
+    <!-- 変数を展開させたいならコロン付き -->
+    <child
+      :message="message"
+      message2="親からのメッセージ2"
+      @onChangeMessage="changeMessage"
+    />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import FirstChild from "@/components/FirstChild.vue";
+import { default as Child } from "@/components/FirstChild.vue";
 
 @Component({
   components: {
-    FirstChild
+    Child
   }
 })
 export default class FirstParent extends Vue {
   public message = "親からのメッセージ";
+
+  public changeMessage(val: string): void {
+    // emitを受け取って書き換える
+    this.message = val;
+  }
 }
 </script>
 

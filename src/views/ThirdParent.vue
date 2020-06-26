@@ -1,26 +1,22 @@
 <template>
   <div class="parent-wrap">
     <div>親</div>
-    <child :message="message" @onChangeMessage="changeMessage" />
+    <!-- 変更イベントを書く必要もない -->
+    <child v-model="message" />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { default as Child } from "@/components/SecondChild.vue";
+import { default as Child } from "@/components/ThirdChild.vue";
 
 @Component({
   components: {
     Child
   }
 })
-export default class SecondParent extends Vue {
+export default class ThirdParent extends Vue {
   public message = "親からのメッセージ";
-
-  public changeMessage(val: string): void {
-    // emitを受け取って書き換える
-    this.message = val;
-  }
 }
 </script>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="child-wrap">
     <div>子</div>
-    <div>{{ message }}</div>
+    <div>{{ value }}</div>
     <button @click="changeMessage">messageをsetter経由で書き換える</button>
   </div>
 </template>
@@ -10,18 +10,20 @@
 import { Component, Vue, Prop } from "vue-property-decorator";
 
 @Component
-export default class SecondChild extends Vue {
-  @Prop() message!: string;
+export default class ThirdChild extends Vue {
+  // valueで受け取る
+  @Prop() value!: string;
 
-  // 内部ではinternalMessageを利用する
-  get internalMessage(): string {
-    return this.message;
+  // 内部ではinternalValueを利用する
+  get internalValue(): string {
+    return this.value;
   }
-  set internalMessage(val: string) {
-    this.$emit("onChangeMessage", val);
+  set internalValue(val: string) {
+    // inputイベントでemitする
+    this.$emit("input", val);
   }
   public changeMessage(): void {
-    this.internalMessage = "子からのsetter経由のemitでの書き換え";
+    this.internalValue = "子からのsetter経由のemitでの書き換え";
   }
 }
 </script>
