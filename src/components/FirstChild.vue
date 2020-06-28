@@ -1,8 +1,8 @@
 <template>
   <div class="child-wrap">
-    <div>子</div>
-    <div>{{ message }}</div>
-    <div>{{ message2 }}</div>
+    <div class="bold">子</div>
+    <div>message = {{ message }}</div>
+    <div>message2 = {{ message2 }}</div>
     <button @click="changeMessage">messageを直で書き換える</button>
     <button @click="changeMessageByEmit">messageをemitで書き換える</button>
   </div>
@@ -21,23 +21,11 @@ export default class FirstChild extends Vue {
     this.message = "子で直接書き換え";
   }
   public changeMessageByEmit(): void {
-    // emitで親に値を送って、親側で書き換えてもらう
+    // emitで親に値を送って、親側で書き換えてもらうのはOK
     this.$emit("onChangeMessage", "子からのemitで書き換え");
   }
 }
 </script>
 
-<style lang="scss" scoped>
-.child-wrap {
-  margin: 12px;
-  padding: 24px;
-  border: solid 1px black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  button {
-    display: block;
-  }
-}
+<style scoped>
 </style>

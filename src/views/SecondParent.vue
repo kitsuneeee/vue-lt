@@ -1,7 +1,11 @@
 <template>
-  <div class="parent-wrap">
-    <div>親</div>
-    <child :message="message" @onChangeMessage="changeMessage" />
+  <div>
+    <div class="bold">getter,setterを試してみた</div>
+    <div class="parent-wrap">
+      <div class="bold">親</div>
+      <div>message = {{ message }}</div>
+      <child :message="message" @onChangeMessage="changeMessage" />
+    </div>
   </div>
 </template>
 
@@ -25,8 +29,4 @@ export default class SecondParent extends Vue {
 </script>
 
 <style scoped>
-.parent-wrap {
-  padding: 24px;
-  border: solid 1px black;
-}
 </style>

@@ -1,12 +1,16 @@
 <template>
-  <div class="parent-wrap">
-    <div>親</div>
-    <!-- 変数を展開させたいならコロン付き -->
-    <child
-      :message="message"
-      message2="親からのメッセージ2"
-      @onChangeMessage="changeMessage"
-    />
+  <div>
+    <div class="bold">Prop,emitを試してみた</div>
+    <div class="parent-wrap">
+      <div class="bold">親</div>
+      <div>message = {{ message }}</div>
+      <!-- 変数を展開させたいならコロン付き -->
+      <child
+        :message="message"
+        message2="親からのリテラルメッセージ"
+        @onChangeMessage="changeMessage"
+      />
+    </div>
   </div>
 </template>
 
@@ -20,7 +24,7 @@ import { default as Child } from "@/components/FirstChild.vue";
   }
 })
 export default class FirstParent extends Vue {
-  public message = "親からのメッセージ";
+  public message = "親からの変数メッセージ";
 
   public changeMessage(val: string): void {
     // emitを受け取って書き換える
@@ -30,8 +34,4 @@ export default class FirstParent extends Vue {
 </script>
 
 <style scoped>
-.parent-wrap {
-  padding: 24px;
-  border: solid 1px black;
-}
 </style>

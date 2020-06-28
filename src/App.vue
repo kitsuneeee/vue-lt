@@ -13,13 +13,17 @@
   </div>
 </template>
 
-<style>
+<style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 #nav {
@@ -37,6 +41,42 @@
 }
 
 .content-wrap {
+  min-width: 60vw;
   padding: 0 24px;
+}
+.parent-wrap {
+  padding: 12px 24px;
+  border: solid 1px black;
+  .data-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    button {
+      display: block;
+    }
+    > * {
+      margin: 4px 0;
+    }
+  }
+}
+.child-wrap {
+  margin: 12px;
+  padding: 12px 24px;
+  border: solid 1px black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  button {
+    display: block;
+  }
+  > * {
+    margin: 4px 0;
+  }
+}
+.bold {
+  font-weight: bold;
+  margin: 4px 0;
 }
 </style>

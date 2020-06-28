@@ -1,8 +1,8 @@
 <template>
   <div class="child-wrap">
-    <div>子</div>
-    <div>{{ value }}</div>
-    <button @click="changeMessage">messageをsetter経由で書き換える</button>
+    <div class="bold">子</div>
+    <div>value = {{ value }}</div>
+    <button @click="changeMessage">valueをinputイベントのemitで書き換える</button>
   </div>
 </template>
 
@@ -11,7 +11,7 @@ import { Component, Vue, Prop } from "vue-property-decorator";
 
 @Component
 export default class ThirdChild extends Vue {
-  // valueで受け取る
+  // Propはvalueと言う名前で受け取る
   @Prop() value!: string;
 
   // 内部ではinternalValueを利用する
@@ -23,15 +23,10 @@ export default class ThirdChild extends Vue {
     this.$emit("input", val);
   }
   public changeMessage(): void {
-    this.internalValue = "子からのsetter経由のemitでの書き換え";
+    this.internalValue = "子からのinputイベントで書き換え";
   }
 }
 </script>
 
 <style scoped>
-.child-wrap {
-  margin: 12px;
-  padding: 24px;
-  border: solid 1px black;
-}
 </style>

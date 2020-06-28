@@ -1,8 +1,12 @@
 <template>
-  <div class="parent-wrap">
-    <div>親</div>
-    <!-- 変更イベントを書く必要もない -->
-    <child v-model="message" />
+  <div>
+    <div class="bold">v-modelを試してみた</div>
+    <div class="parent-wrap">
+      <div class="bold">親</div>
+      <div>message = {{ message }}</div>
+      <!-- 変更イベントを書く必要もない -->
+      <child v-model="message" />
+    </div>
   </div>
 </template>
 
@@ -21,8 +25,4 @@ export default class ThirdParent extends Vue {
 </script>
 
 <style scoped>
-.parent-wrap {
-  padding: 24px;
-  border: solid 1px black;
-}
 </style>

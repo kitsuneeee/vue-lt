@@ -1,7 +1,7 @@
 <template>
   <div class="child-wrap">
-    <div>子</div>
-    <div>{{ message }}</div>
+    <div class="bold">子</div>
+    <div>message = {{ message }}</div>
   </div>
 </template>
 
@@ -10,25 +10,13 @@ import { Component, Vue } from "vue-property-decorator";
 
 @Component
 export default class FifthChild extends Vue {
-  public message = "子どものメッセージ";
+  public message = "子のメッセージ";
 
   public changeMessage(): void {
-    this.message = "メソッド実行されました";
+    this.message = "子の変更メソッドで書き換え";
   }
 }
 </script>
 
-<style lang="scss" scoped>
-.child-wrap {
-  margin: 12px;
-  padding: 24px;
-  border: solid 1px black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  button {
-    display: block;
-  }
-}
+<style scoped>
 </style>

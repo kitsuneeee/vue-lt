@@ -1,10 +1,15 @@
 <template>
-  <div class="parent-wrap">
-    <div>親</div>
-    <div>{{ childMessage }}</div>
-    <button @click="changeMessage">子どもの変更書き換え</button>
-    <button @click="changeMessage2">子どものメソッド実行</button>
-    <child ref="child" />
+  <div>
+    <div class="bold">$refsを試してみた</div>
+    <div class="parent-wrap">
+      <div class="bold">親</div>
+      <div class="data-wrap">
+        <div>$refs.child.message = {{ childMessage }}（参照はできない）</div>
+        <button @click="changeMessage">$refs.child.messageのmessageを直接書き換え</button>
+        <button @click="changeMessage2">子どものmessage変更メソッド実行</button>
+      </div>
+      <child ref="child" />
+    </div>
   </div>
 </template>
 
@@ -33,7 +38,7 @@ export default class FifthParent extends Vue {
 
   public changeMessage(): void {
     if (this.$refs.child) {
-      this.$refs.child.message = "書き換え";
+      this.$refs.child.message = "親が直接書き換え";
     }
   }
   public changeMessage2(): void {
@@ -45,8 +50,4 @@ export default class FifthParent extends Vue {
 </script>
 
 <style scoped>
-.parent-wrap {
-  padding: 24px;
-  border: solid 1px black;
-}
 </style>
